@@ -1,0 +1,38 @@
+# Innovaccer
+
+> Innovaccer is a healthcare AI cloud company. Its FHIR-enabled Data Activation
+> Platform unifies patient data across sources to power population health, care
+> management, and analytics. Innovaccer also publishes the open-source Masala
+> Design System and the Healthcare Model Context Protocol (HMCP) for agentic
+> healthcare applications. The developer platform is gated behind a portal;
+> the open-source developer surface (design system, MCP) is public.
+
+## Developer
+
+- [Developer Portal](https://developer.innovaccer.com): Innovaccer developer platform (Nucleus / Datashop Engine).
+- [GitHub Organization](https://github.com/innovaccer): 33+ repositories — design system, Healthcare-MCP, tooling.
+- [Masala Design System docs](https://mds.innovaccer.com): React component library documentation.
+
+## Packages
+
+- [@innovaccer/design-system](https://www.npmjs.com/package/@innovaccer/design-system): React UI component library.
+- [@innovaccer/charts](https://www.npmjs.com/package/@innovaccer/charts): Chart components.
+- [@innovaccer/helpers](https://www.npmjs.com/package/@innovaccer/helpers): Charting/helper utilities.
+- [@innovaccer/rich-text-editor](https://www.npmjs.com/package/@innovaccer/rich-text-editor): DraftJS-based rich text editor.
+- [@innovaccer/mds-mcp](https://www.npmjs.com/package/@innovaccer/mds-mcp): MCP server for the Masala Design System.
+
+## Agents / MCP
+
+- [Healthcare-MCP (HMCP)](https://github.com/innovaccer/Healthcare-MCP): Open protocol for healthcare agentic apps (OAuth 2.0 / SMART on FHIR, PKCE, audit logging).
+
+## Security & Compliance
+
+- [Security](https://innovaccer.com/security): HITRUST CSF certified; 24/7 SOC; data / application security teams.
+- [Vulnerability reporting](https://innovaccer.com/bug-reporting/): Responsible disclosure (scope *.innovaccer.com; contact enterprise-security@innovaccer.com).
+
+## Company
+
+- [Blog](https://innovaccer.com/blog)
+- [Resources](https://innovaccer.com/resources)
+- [Privacy Notice](https://innovaccer.com/privacy-policy)
+- [Terms of Use](https://innovaccer.com/terms-of-use)

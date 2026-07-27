@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: searched
+source: https://mds.innovaccer.com / https://github.com/innovaccer/design-system
+name: Masala Design System (MDS)
+summary: >-
+  Innovaccer's open-source design system — a React component library plus charting,
+  rich-text editing, AI, and mobile (Flutter/Dart) component families used to build
+  healthcare application UIs. Documented at mds.innovaccer.com.
+docs: https://mds.innovaccer.com
+loader_libraries:
+- "@innovaccer/design-system (npm)"
+- "@innovaccer/charts (npm)"
+- "@innovaccer/helpers (npm)"
+- "@innovaccer/rich-text-editor (npm)"
+families:
+- name: Core components
+  library: "@innovaccer/design-system"
+  repository: https://github.com/innovaccer/design-system
+  description: React UI component library (the Masala Design System core).
+- name: Charts
+  library: "@innovaccer/charts"
+  repository: https://github.com/innovaccer/design-system
+  description: Charting/visualization components.
+- name: Rich text editor
+  library: "@innovaccer/rich-text-editor"
+  repository: https://github.com/innovaccer/mds-rich-text-editor
+  description: React rich-text editor component built on DraftJS.
+- name: MDS AI
+  library: mds-ai
+  repository: https://github.com/innovaccer/mds-ai
+  description: React components tailored for AI-based applications.
+- name: Mobile design system
+  library: mobile-design-system
+  repository: https://github.com/innovaccer/mobile-design-system
+  description: Mobile design system implemented in Dart/Flutter.

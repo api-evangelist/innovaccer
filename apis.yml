@@ -1,7 +1,27 @@
 aid: innovaccer
 name: Innovaccer
-description: Innovaccer is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Innovaccer is a healthcare AI cloud company whose FHIR-enabled Data Activation
+  Platform unifies fragmented patient and clinical data across EHRs, claims, and
+  other sources into a longitudinal record that powers population health, care
+  management, analytics, and agentic healthcare applications. The company is HITRUST
+  CSF certified and publishes open-source developer surfaces including the Masala
+  Design System (a React component library) and the Healthcare Model Context Protocol
+  (HMCP), an OAuth 2.0 / SMART on FHIR protocol for healthcare AI agents. Its core
+  platform API is offered to customers and partners through the Innovaccer developer
+  portal (Nucleus / Datashop Engine).
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/670e4ade75003c7364a3944d/69aea95986351ab53056a0e0_Meta%20image%20(2).png
 url: https://raw.githubusercontent.com/api-evangelist/innovaccer/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,9 +31,18 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
+- Healthcare
+- Health Data
+- FHIR
+- Interoperability
+- Population Health
+- Artificial Intelligence
+- Data Platform
+- Design System
+- Model Context Protocol
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,3 +52,41 @@ maintainers:
 common:
 - type: Website
   url: https://innovaccer.com
+- type: DeveloperPortal
+  url: https://developer.innovaccer.com
+- type: Documentation
+  url: https://mds.innovaccer.com
+- type: GitHubOrganization
+  url: https://github.com/innovaccer
+- type: Blog
+  url: https://innovaccer.com/blog
+- type: PrivacyPolicy
+  url: https://innovaccer.com/privacy-policy
+- type: TermsOfService
+  url: https://innovaccer.com/terms-of-use
+- type: Security
+  url: https://innovaccer.com/bug-reporting/
+- type: Compliance
+  url: https://innovaccer.com/security
+- type: Packages
+  url: packages/innovaccer-packages.yml
+- type: Components
+  url: components/innovaccer-components.yml
+- type: MCPServer
+  url: mcp/innovaccer-mcp.yml
+  name: Masala Design System MCP server
+- type: Conformance
+  url: conformance/innovaccer-conformance.yml
+- type: DomainSecurity
+  url: security/innovaccer-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/innovaccer-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/innovaccer-trust-center.yml
+- type: LLMsTxt
+  url: llms/innovaccer-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+url: https://innovaccer.com/security
+certifications:
+- HITRUST CSF
+programs:
+- name: 24/7 Security Operations Center (SOC)
+  description: Continuous monitoring and incident management.
+- name: Application Security
+  description: Code security and product patching.
+- name: Data Security
+  description: Data governance, masking, access controls, and data-leak prevention.
+recognition:
+- KLAS (top-of-class in Cyber Security)
+- SecurityScorecard (among highest-rated healthcare companies)
+hosting:
+- AWS and Azure data centers within the customer's primary region
+notes: >-
+  Innovaccer's FHIR-enabled Data Activation Platform holds HITRUST CSF certification.
+  The page does not enumerate SOC 2 / ISO 27001 / PCI DSS / FedRAMP certificates by name.
+evidence:
+- {source: https://innovaccer.com/security, keywords: [hitrust csf, security operations center, data security, klas, securityscorecard]}

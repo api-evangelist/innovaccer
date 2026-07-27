@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: https://innovaccer.com/security / https://github.com/innovaccer/Healthcare-MCP
+notes: >-
+  Standards claimed on Innovaccer's public surface. The healthcare data-platform API
+  is gated (no public OpenAPI), so these are documentation-asserted, not spec-derived.
+standards:
+- id: hitrust-csf
+  conforms: true
+  evidence: "Innovaccer's FHIR-enabled Data Activation Platform holds HITRUST CSF certification (innovaccer.com/security)."
+- id: fhir
+  conforms: true
+  evidence: "Described as a FHIR-enabled Data Activation Platform; HMCP implements SMART on FHIR."
+- id: smart-on-fhir
+  conforms: true
+  evidence: "Healthcare-MCP (HMCP) implements OAuth 2.0 / SMART on FHIR."
+- id: oauth2
+  conforms: true
+  evidence: "HMCP uses OAuth 2.0 with PKCE for agent authentication."
+- id: hipaa
+  conforms: true
+  evidence: "HITRUST CSF certification and HMCP controls (encryption, audit trails, rate limiting) target HIPAA compliance."

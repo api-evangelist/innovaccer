@@ -1,0 +1,61 @@
+generated: '2026-07-19'
+method: searched
+source: https://registry.npmjs.org / https://github.com/innovaccer
+notes: >-
+  First-party Innovaccer packages published on npm under the @innovaccer scope.
+  These are client-side libraries for the open-source Masala Design System (MDS)
+  and an MCP server for it, not SDKs for the Innovaccer healthcare data platform
+  API (that platform is gated behind the developer portal at developer.innovaccer.com).
+packages:
+- language: javascript
+  registry: npm
+  name: "@innovaccer/design-system"
+  version: 4.26.1
+  license: MIT
+  url: https://www.npmjs.com/package/@innovaccer/design-system
+  install: npm install @innovaccer/design-system
+  homepage: https://mds.innovaccer.com
+  repository: https://github.com/innovaccer/design-system
+  description: React components library for the Innovaccer (Masala) Design System.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@innovaccer/charts"
+  version: 1.0.0
+  license: MIT
+  url: https://www.npmjs.com/package/@innovaccer/charts
+  install: npm install @innovaccer/charts
+  homepage: https://innovaccer.github.io/design-system
+  repository: https://github.com/innovaccer/design-system
+  description: Chart components for the Masala Design System.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@innovaccer/helpers"
+  version: 2.0.1
+  license: MIT
+  url: https://www.npmjs.com/package/@innovaccer/helpers
+  install: npm install @innovaccer/helpers
+  homepage: https://innovaccer.github.io/mds-helpers
+  repository: https://github.com/innovaccer/mds-helpers
+  description: Helper utilities / charting helpers for the Masala Design System.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@innovaccer/rich-text-editor"
+  version: 3.0.5
+  license: MIT
+  url: https://www.npmjs.com/package/@innovaccer/rich-text-editor
+  install: npm install @innovaccer/rich-text-editor
+  repository: https://github.com/innovaccer/mds-rich-text-editor
+  description: React rich text editor built on DraftJS.
+  official: true
+- language: javascript
+  registry: npm
+  name: "@innovaccer/mds-mcp"
+  version: 5.0.0-26-mcp.9.d9fbf90
+  license: MIT
+  url: https://www.npmjs.com/package/@innovaccer/mds-mcp
+  install: npx @innovaccer/mds-mcp
+  description: Model Context Protocol (MCP) server for the Masala Design System.
+  official: true

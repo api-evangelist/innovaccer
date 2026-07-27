@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://www.npmjs.com/package/@innovaccer/mds-mcp
+servers:
+- name: mds-mcp
+  status: published
+  transport: stdio
+  package: "@innovaccer/mds-mcp"
+  install: npx @innovaccer/mds-mcp
+  description: >-
+    Official Model Context Protocol server for the Masala Design System (MDS).
+    Lets an agent/IDE query MDS components, tokens, and usage guidance.
+  url: https://www.npmjs.com/package/@innovaccer/mds-mcp
+related:
+- name: Healthcare Model Context Protocol (HMCP)
+  status: specification
+  transport: [sse, streamable-http]
+  repository: https://github.com/innovaccer/Healthcare-MCP
+  description: >-
+    Open protocol (a healthcare-oriented extension of Anthropic's MCP) for secure,
+    interoperable communication between healthcare agentic applications. Implements
+    OAuth 2.0 / SMART on FHIR, PKCE, encryption, audit logging, and rate limiting for
+    HIPAA-aligned agent-to-agent workflows. Python reference implementation; not yet
+    published to PyPI (build from source with hatch). No public hosted endpoint.
