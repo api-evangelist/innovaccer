@@ -31,7 +31,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-15'
 tags:
 - Company
 - Healthcare
@@ -59,7 +59,11 @@ common:
 - type: GitHubOrganization
   url: https://github.com/innovaccer
 - type: Blog
-  url: https://innovaccer.com/blog
+  url: https://innovaccer.com/blogs
+- type: Support
+  url: https://support.innovaccer.com
+- type: Login
+  url: https://nucleus.innovaccer.com/login
 - type: PrivacyPolicy
   url: https://innovaccer.com/privacy-policy
 - type: TermsOfService
@@ -85,8 +89,25 @@ common:
   url: security/innovaccer-trust-center.yml
 - type: LLMsTxt
   url: llms/innovaccer-llms.txt
+- type: Authentication
+  url: authentication/innovaccer-authentication.yml
+  name: HMCP authentication profile (OAuth 2.0 / OIDC / SMART on FHIR)
+- type: OAuthScopes
+  url: scopes/innovaccer-scopes.yml
+  name: HMCP standard scopes
+- type: Conventions
+  url: conventions/innovaccer-conventions.yml
+- type: Lifecycle
+  url: lifecycle/innovaccer-lifecycle.yml
+- type: ChangeLog
+  url: changelog/innovaccer-changelog.yml
+  name: Masala Design System changelog
+- type: Plans
+  url: plans/innovaccer-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/innovaccer-rate-limits.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-15'
+  status: enriched
+  artifacts_added: 8
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
