@@ -1,0 +1,27 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://github.com/innovaccer/Healthcare-MCP /
+  https://nucleus.innovaccer.com/devhome/documentation?embed=true
+limit_count: 0
+notes: >-
+  No numeric rate limits, no windows and no response headers are published on any
+  Innovaccer public surface. Rate limiting is NAMED as a control in the HMCP
+  README's list of industry-standard controls ("OAuth 2.0, OpenID Connect following
+  SMART on FHIR, Data Segregation & Encryption, Audit trails, Rate Limiting & Risk
+  Assessment"), but the specification does not define a limit, a window, a header
+  or a status code for it — and the HMCP reference implementation ships no
+  rate-limit middleware in src/hmcp/. The Nucleus / Datashop platform API reference
+  that would carry runtime limits is behind the portal login.
+limits: []
+response_headers:
+  documented: false
+  observed: []
+  note: >-
+    Nothing to observe: there is no anonymous Innovaccer API endpoint to call, so no
+    RateLimit-* / X-RateLimit-* / Retry-After header could be sampled from a live
+    response.
+exhaustion_status: unknown
+evidence:
+- {url: 'https://github.com/innovaccer/Healthcare-MCP', status: 200, note: 'README names rate limiting as a control but publishes no values'}
+- {url: 'https://nucleus.innovaccer.com/devhome/api-catalog?embed=true', status: 302, note: 'redirects to /login; API reference not readable anonymously'}

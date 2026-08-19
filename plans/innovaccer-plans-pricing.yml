@@ -1,0 +1,35 @@
+generated: '2026-08-15'
+method: searched
+source: https://innovaccer.com/
+plan_count: 0
+pricing_model: enterprise-contact-sales
+currency: null
+notes: >-
+  Innovaccer publishes no pricing page and no plan tiers. There is no /pricing or
+  /plans route on innovaccer.com (both 404 into the SPA catch-all), and the site's
+  own sitemap.xml lists only three URLs (/, /blogs, /resources) — no commercial
+  pages at all. The route to purchase is a sales conversation via
+  https://innovaccer.com/contact-us. The open-source surface (Masala Design System,
+  Healthcare-MCP) is MIT-licensed and free, but it is a component library and a
+  protocol specification, not a metered API product.
+plans: []
+free_tier:
+  available: false
+  note: >-
+    No free tier or self-serve trial for the platform API; the developer portal
+    (developer.innovaccer.com -> nucleus.innovaccer.com) requires an account.
+open_source:
+  license: MIT
+  free: true
+  packages:
+  - "@innovaccer/design-system"
+  - "@innovaccer/charts"
+  - "@innovaccer/helpers"
+  - "@innovaccer/rich-text-editor"
+  - "@innovaccer/mds-mcp"
+  - hmcp (source only; not published to PyPI)
+evidence:
+- {url: 'https://innovaccer.com/pricing', status: 404}
+- {url: 'https://innovaccer.com/plans', status: 404}
+- {url: 'https://innovaccer.com/sitemap.xml', status: 200, note: 'lists only /, /blogs, /resources'}
+- {url: 'https://innovaccer.com/contact-us', status: 200}

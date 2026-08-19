@@ -4,35 +4,62 @@
 > Platform unifies patient data across sources to power population health, care
 > management, and analytics. Innovaccer also publishes the open-source Masala
 > Design System and the Healthcare Model Context Protocol (HMCP) for agentic
-> healthcare applications. The developer platform is gated behind a portal;
-> the open-source developer surface (design system, MCP) is public.
+> healthcare applications. The platform API is gated behind the Nucleus /
+> Datashop developer portal; the open-source developer surface (design system,
+> MCP server, HMCP specification) is public.
 
 ## Developer
 
-- [Developer Portal](https://developer.innovaccer.com): Innovaccer developer platform (Nucleus / Datashop Engine).
-- [GitHub Organization](https://github.com/innovaccer): 33+ repositories — design system, Healthcare-MCP, tooling.
+- [Developer Portal](https://developer.innovaccer.com): Redirects to nucleus.innovaccer.com/devhome/landing (Datashop Engine). The API catalog and API docs require a portal login.
+- [GitHub Organization](https://github.com/innovaccer): 33 public repositories — design system, Healthcare-MCP, tooling.
 - [Masala Design System docs](https://mds.innovaccer.com): React component library documentation.
+- [Support portal](https://support.innovaccer.com): Customer support; requires login.
+
+## API contracts
+
+- No OpenAPI, Swagger, AsyncAPI or GraphQL schema is published on any Innovaccer host. GitHub code search across `org:innovaccer` returns zero results for `openapi`, `swagger` and `asyncapi` (checked 2026-08-15).
+- No `/.well-known/` document is served. `nucleus.innovaccer.com/.well-known/openid-configuration` and `/.well-known/oauth-authorization-server` redirect (302) to the login page.
 
 ## Packages
 
-- [@innovaccer/design-system](https://www.npmjs.com/package/@innovaccer/design-system): React UI component library.
-- [@innovaccer/charts](https://www.npmjs.com/package/@innovaccer/charts): Chart components.
-- [@innovaccer/helpers](https://www.npmjs.com/package/@innovaccer/helpers): Charting/helper utilities.
-- [@innovaccer/rich-text-editor](https://www.npmjs.com/package/@innovaccer/rich-text-editor): DraftJS-based rich text editor.
-- [@innovaccer/mds-mcp](https://www.npmjs.com/package/@innovaccer/mds-mcp): MCP server for the Masala Design System.
+- [@innovaccer/design-system](https://www.npmjs.com/package/@innovaccer/design-system): React UI component library. 4.27.0 (2026-08-04).
+- [@innovaccer/charts](https://www.npmjs.com/package/@innovaccer/charts): Chart components. 1.0.0 (2021-04-24).
+- [@innovaccer/helpers](https://www.npmjs.com/package/@innovaccer/helpers): Charting/helper utilities. 2.0.1 (2024-10-25).
+- [@innovaccer/rich-text-editor](https://www.npmjs.com/package/@innovaccer/rich-text-editor): DraftJS-based rich text editor. 3.0.5 (2026-05-14).
+- [@innovaccer/mds-mcp](https://www.npmjs.com/package/@innovaccer/mds-mcp): MCP server for the Masala Design System. 5.0.0-26-mcp.9 prerelease (2026-07-13).
 
 ## Agents / MCP
 
-- [Healthcare-MCP (HMCP)](https://github.com/innovaccer/Healthcare-MCP): Open protocol for healthcare agentic apps (OAuth 2.0 / SMART on FHIR, PKCE, audit logging).
+- [Healthcare-MCP (HMCP)](https://github.com/innovaccer/Healthcare-MCP): Open protocol extending MCP 2025-03-26 for healthcare agentic apps. MIT. Python reference implementation, not on PyPI.
+- [HMCP specification](https://github.com/innovaccer/Healthcare-MCP/tree/main/docs/specification): Authentication & scopes, guardrails, patient context, agent-to-agent sampling.
+- [HMCP authentication](https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md): OAuth 2.0 authorization-code and client-credentials flows, OpenID Connect, mTLS, JWT claims (patient, encounter, tenant, acr, fhirUser).
+- [HMCP scopes](https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md#scopes-in-hmcp): `hmcp:access`, `hmcp:read`, `hmcp:write`, `patient/hmcp:read`, `patient/hmcp:write`, `openid`, `profile`, `launch/patient`, `offline_access`.
+- [HMCP guardrails](https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/guardrails.md): NVIDIA NeMo Guardrails, declared under the server's `experimental` capabilities.
+- MCP deployment: local stdio only (`npx @innovaccer/mds-mcp`). No remote MCP endpoint is published.
+
+## Runtime semantics
+
+- Transports: SSE and streamable-http (HMCP servers).
+- Auth: `Authorization: Bearer <JWT>`, SMART on FHIR scopes; mTLS for service-to-service.
+- Idempotency: not documented.
+- Pagination: not documented.
+- Rate limits: named as a control in the HMCP README, but no limits, windows or headers are published.
+- Errors: base MCP JSON-RPC shape; only `GuardrailException` is named. No RFC 9457 problem+json.
+
+## Commercial
+
+- No pricing or plans page. `innovaccer.com/pricing` and `/plans` return 404; the sitemap lists only `/`, `/blogs` and `/resources`. Enterprise sales via [Contact us](https://innovaccer.com/contact-us).
+- No public status page (`status.innovaccer.com` does not resolve). No published SLA.
 
 ## Security & Compliance
 
 - [Security](https://innovaccer.com/security): HITRUST CSF certified; 24/7 SOC; data / application security teams.
-- [Vulnerability reporting](https://innovaccer.com/bug-reporting/): Responsible disclosure (scope *.innovaccer.com; contact enterprise-security@innovaccer.com).
+- [Vulnerability reporting](https://innovaccer.com/bug-reporting/): Responsible disclosure (scope *.innovaccer.com; contact enterprise-security@innovaccer.com). No monetary bounty; hall-of-fame recognition.
+- No `security.txt` is served, so the disclosure policy is not machine-discoverable.
 
 ## Company
 
-- [Blog](https://innovaccer.com/blog)
+- [Blog](https://innovaccer.com/blogs)
 - [Resources](https://innovaccer.com/resources)
 - [Privacy Notice](https://innovaccer.com/privacy-policy)
 - [Terms of Use](https://innovaccer.com/terms-of-use)

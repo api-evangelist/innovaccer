@@ -1,22 +1,59 @@
-generated: '2026-07-19'
+generated: '2026-08-15'
 method: searched
-source: https://innovaccer.com/security / https://github.com/innovaccer/Healthcare-MCP
+source: >-
+  https://innovaccer.com/security /
+  https://github.com/innovaccer/Healthcare-MCP/tree/main/docs/specification
 notes: >-
   Standards claimed on Innovaccer's public surface. The healthcare data-platform API
-  is gated (no public OpenAPI), so these are documentation-asserted, not spec-derived.
+  is gated (no public OpenAPI), so these are documentation-asserted, not
+  spec-derived. The HMCP entries are now backed by the specification text rather
+  than the repository description alone.
 standards:
 - id: hitrust-csf
   conforms: true
-  evidence: "Innovaccer's FHIR-enabled Data Activation Platform holds HITRUST CSF certification (innovaccer.com/security)."
-- id: fhir
-  conforms: true
-  evidence: "Described as a FHIR-enabled Data Activation Platform; HMCP implements SMART on FHIR."
-- id: smart-on-fhir
-  conforms: true
-  evidence: "Healthcare-MCP (HMCP) implements OAuth 2.0 / SMART on FHIR."
-- id: oauth2
-  conforms: true
-  evidence: "HMCP uses OAuth 2.0 with PKCE for agent authentication."
+  evidence: "Innovaccer's FHIR-enabled Data Activation Platform holds HITRUST CSF certification (https://innovaccer.com/security)."
 - id: hipaa
   conforms: true
-  evidence: "HITRUST CSF certification and HMCP controls (encryption, audit trails, rate limiting) target HIPAA compliance."
+  evidence: "HITRUST CSF certification plus HMCP controls (encryption, audit trails, rate limiting, data segregation) target HIPAA compliance (https://github.com/innovaccer/Healthcare-MCP)."
+- id: fhir
+  conforms: true
+  evidence: "Described as a FHIR-enabled Data Activation Platform; HMCP patient context is modelled on SMART on FHIR resource/context semantics."
+- id: smart-on-fhir
+  conforms: true
+  evidence: "HMCP specification index: 'HMCP implements OAuth 2.0 and OpenID Connect following the SMART on FHIR authorization framework model' (docs/specification/index.md, docs/specification/auth.md)."
+- id: oauth2
+  conforms: true
+  evidence: "HMCP documents both the authorization-code and client-credentials flows with /authorize and /token parameter sets (docs/specification/auth.md)."
+- id: oidc
+  conforms: true
+  evidence: "HMCP supports OpenID Connect — `openid` scope, ID token, UserInfo endpoint, standard plus healthcare claims (docs/specification/auth.md §OpenID Connect Integration)."
+- id: mtls
+  conforms: true
+  evidence: "mTLS named as one of two primary authentication mechanisms, for service-to-service communication (docs/specification/index.md)."
+- id: jwt
+  conforms: true
+  evidence: "HMCP access tokens are JWTs; iss/sub/aud/exp/iat/scope plus patient/encounter/tenant/acr/fhirUser claims (docs/specification/auth.md §JWT Format and Claims)."
+- id: mcp
+  conforms: true
+  evidence: "HMCP is an explicit extension of Model Context Protocol 2025-03-26, adding sampling on the server side and experimental guardrail capabilities; @innovaccer/mds-mcp is a published MCP server."
+- id: openapi
+  conforms: false
+  evidence: "No OpenAPI or Swagger document is served on any Innovaccer host, and GitHub code search across org:innovaccer returns 0 results for openapi and 0 for swagger (2026-08-15)."
+- id: asyncapi
+  conforms: false
+  evidence: "No AsyncAPI document; GitHub code search across org:innovaccer returns 0 results for asyncapi (2026-08-15). No public event or webhook surface is documented."
+- id: rfc9457
+  conforms: false
+  evidence: "No application/problem+json error envelope is documented; HMCP errors inherit the base MCP JSON-RPC shape."
+- id: rfc8594
+  conforms: false
+  evidence: "No Sunset/Deprecation header behaviour documented (see lifecycle/innovaccer-lifecycle.yml)."
+- id: rfc9116
+  conforms: false
+  evidence: "No /.well-known/security.txt served on innovaccer.com (404), nucleus.innovaccer.com (404) or mds.innovaccer.com (403). A responsible-disclosure page exists at https://innovaccer.com/bug-reporting/ but is not machine-discoverable."
+open_questions:
+- >-
+  The HMCP repository ships schema/schema.json — the natural home for a
+  machine-readable protocol schema — but the file is ZERO BYTES (GitHub contents API
+  reports size 0, sha e69de29b, the empty-blob sha), so there is no machine-readable
+  HMCP schema to consume today. Nothing was saved to json-schema/ on that basis.

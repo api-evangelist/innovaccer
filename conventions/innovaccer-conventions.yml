@@ -1,0 +1,96 @@
+generated: '2026-08-15'
+method: searched
+source: https://github.com/innovaccer/Healthcare-MCP/tree/main/docs/specification
+notes: >-
+  Cross-cutting runtime semantics for the surface Innovaccer publishes openly — the
+  Healthcare Model Context Protocol (HMCP). No OpenAPI exists for any Innovaccer
+  API, so nothing here is spec-derived; every entry is read from the published HMCP
+  specification documents or recorded as an honest gap. The Nucleus / Datashop
+  platform API's conventions are not readable anonymously.
+applies_to:
+  api: Healthcare Model Context Protocol (HMCP)
+  repository: https://github.com/innovaccer/Healthcare-MCP
+  base_protocol: Model Context Protocol (2025-03-26)
+transport:
+  documented: true
+  modes:
+  - sse
+  - streamable-http
+  source: https://github.com/innovaccer/Healthcare-MCP#overview--motivation
+  note: >-
+    The reference server runs with `server.run(transport="streamable-http")` and the
+    README states support for both SSE and streamable-http.
+authentication:
+  style: bearer-jwt
+  framework: SMART on FHIR (OAuth 2.0 + OpenID Connect); mTLS for service-to-service
+  header: "Authorization: Bearer ACCESS_TOKEN"
+  see: authentication/innovaccer-authentication.yml
+authorization:
+  style: oauth2-scopes
+  see: scopes/innovaccer-scopes.yml
+tenancy_and_context:
+  patient_context:
+    documented: true
+    mechanisms: [oauth-scope-prefix, jwt-claim, http-header]
+    claims: [patient, encounter, tenant, fhirUser]
+    note: >-
+      Patient context is carried in the token, not in each call; the server enforces
+      isolation. HTTP headers are supported only for backwards compatibility with
+      systems that do not fully implement SMART on FHIR.
+  see: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/context.md
+idempotency:
+  supported: false
+  documented: false
+  note: >-
+    No idempotency key, header, scope or retention window is documented anywhere on
+    Innovaccer's public surface. No Idempotency pointer is emitted in apis.yml.
+pagination:
+  documented: false
+  style: unknown
+  note: MCP tool calls, not REST collections; no pagination convention published.
+field_expansion:
+  documented: false
+metadata:
+  documented: false
+request_tracing:
+  documented: false
+  note: >-
+    HMCP claims comprehensive audit logging of agent activity, but no request-id or
+    correlation header is named in the specification.
+versioning:
+  style: semver on the package/spec; no API version segment or header documented
+  see: lifecycle/innovaccer-lifecycle.yml
+error_envelope:
+  style: mcp-jsonrpc
+  documented: partial
+  named_errors:
+  - name: GuardrailException
+    meaning: The request was blocked by a configured guardrail.
+    source: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/guardrails.md
+  rfc9457: false
+  note: >-
+    No RFC 9457 problem+json envelope and no error-code catalogue. Errors inherit
+    the base MCP JSON-RPC error shape; only GuardrailException is named in the
+    specification.
+rate_limit_signaling:
+  documented: false
+  see: rate-limits/innovaccer-rate-limits.yml
+safety_controls:
+  guardrails:
+    documented: true
+    capability: experimental
+    implementation: NVIDIA NeMo Guardrails
+    configurable_per: input/output of the server agent
+    source: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/guardrails.md
+    note: >-
+      HMCP's stated differentiator over base MCP — guardrails are declared under the
+      server's `experimental` capabilities and configured per input/output via YAML
+      rails config plus Python action handlers.
+agent_to_agent:
+  documented: true
+  mechanism: sampling
+  note: >-
+    Bidirectional agent-to-agent communication is achieved by adding MCP `sampling`
+    capability to the HMCP SERVER (base MCP implements sampling only on the client),
+    so client and server can both exchange LLM inputs and outputs.
+  source: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/sampling.md

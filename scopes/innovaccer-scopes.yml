@@ -1,0 +1,46 @@
+generated: '2026-08-15'
+method: searched
+source: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md
+docs: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md
+applies_to:
+  api: Healthcare Model Context Protocol (HMCP)
+  repository: https://github.com/innovaccer/Healthcare-MCP
+notes: >-
+  Scopes published verbatim in the HMCP specification's "Standard Scopes" table.
+  These govern access to an HMCP server, Innovaccer's open-source healthcare
+  extension of MCP — not the gated Nucleus / Datashop platform API, for which no
+  scope reference is published anonymously. Derived from documentation, not from a
+  machine-readable securitySchemes block (Innovaccer publishes no OpenAPI).
+framework: SMART on FHIR
+format:
+  pattern: "[patient/][(read|write)].[resource]"
+  description: >-
+    Optional `patient/` prefix restricts access to resources associated with the
+    current patient context; `read`/`write` sets permission level; the resource
+    segment names the resource type or action.
+scope_count: 9
+scopes:
+- name: hmcp:access
+  description: Basic access to HMCP services.
+- name: hmcp:read
+  description: Read access to HMCP resources.
+- name: hmcp:write
+  description: Write access to HMCP resources.
+- name: patient/hmcp:read
+  description: Read access limited to the current patient context.
+  patient_scoped: true
+- name: patient/hmcp:write
+  description: Write access limited to the current patient context.
+  patient_scoped: true
+- name: openid
+  description: Authentication using OpenID Connect; returns an ID token.
+- name: profile
+  description: Access to basic user profile information.
+- name: launch/patient
+  description: Request patient context at launch time; token response includes a `patient` parameter.
+- name: offline_access
+  description: Request a refresh token for offline access.
+patient_context_flow:
+- Client requests the resource scope with the `patient/` prefix together with `launch/patient`.
+- Authorization server returns a `patient` parameter in the token response containing the patient ID.
+- All operations using that token are automatically restricted to that patient.

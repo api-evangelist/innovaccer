@@ -1,0 +1,72 @@
+generated: '2026-08-15'
+method: searched
+source: https://github.com/innovaccer/design-system/blob/master/CHANGELOG.md
+docs: https://github.com/innovaccer/design-system/releases
+notes: >-
+  The only dated, structured changelog Innovaccer publishes is for the open-source
+  Masala Design System (MDS). There is no public changelog or release-notes feed for
+  the Nucleus / Datashop healthcare platform API — that lives behind the developer
+  portal login. Recent window only; the full file runs to 137 KB.
+applies_to:
+  name: Masala Design System
+  package: "@innovaccer/design-system"
+  repository: https://github.com/innovaccer/design-system
+scheme: semver
+current_version: 4.27.0
+current_version_date: '2026-08-04'
+entry_shape:
+- Highlights
+- Breaking changes
+- Migration guide
+- Deprecations
+- Features
+- Fixes
+entries:
+- version: 4.27.0
+  date: '2026-08-04'
+  breaking: false
+  deprecations: false
+  highlights: >-
+    Full keyboard navigation in the Calendar component, plus a broad sweep of ARIA
+    and semantic-structure fixes across Dropdown, Select, Table, HorizontalNav and Icon.
+  additions:
+  - "feat(calendar): keyboard navigation in the Calendar component"
+- version: 4.26.0
+  date: '2026-07-14'
+  breaking: false
+  deprecations: false
+  highlights: >-
+    Broad accessibility improvements across form patterns, Dropdown, Grid, Icon,
+    Select and VerticalNav — screen-reader announcements, associated labels and
+    consistent autocomplete handling.
+  additions: []
+- version: 4.25.1
+  date: '2026-07-01'
+  breaking: false
+  deprecations: false
+  highlights: "Fixed the ordering of PopoverOption props in DatePicker."
+  additions: []
+- version: 4.25.0
+  date: '2026-05-19'
+  breaking: false
+  deprecations: false
+  highlights: >-
+    Responsive behaviour added to PageHeader and DatePicker patterns; improved Table
+    interactions and refined accessibility across Chip, Input and Header.
+  additions: []
+- version: 4.24.0
+  date: '2026-04-24'
+  breaking: false
+  deprecations: false
+- version: 4.23.0
+  date: '2026-04-10'
+  breaking: false
+  deprecations: false
+- version: 4.22.0
+  date: '2026-03-30'
+  breaking: false
+  deprecations: false
+- version: 4.21.0
+  date: '2026-03-18'
+  breaking: false
+  deprecations: false

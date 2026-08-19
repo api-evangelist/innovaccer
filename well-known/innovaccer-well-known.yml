@@ -1,0 +1,48 @@
+generated: '2026-08-15'
+method: probed
+source: live HTTP probes of innovaccer.com, nucleus.innovaccer.com and mds.innovaccer.com
+result: none
+notes: >-
+  No /.well-known/ document is served on any Innovaccer host. The marketing site
+  (innovaccer.com) 404s every path. The developer platform host
+  (nucleus.innovaccer.com, the target of the developer.innovaccer.com redirect)
+  answers 302 to /login?redirect_url=... for the OAuth/OIDC/api-catalog paths —
+  i.e. the discovery documents are behind the same session wall as the API
+  catalog, not published anonymously. mds.innovaccer.com (Cloudflare/S3 origin)
+  returns 403 application/xml for every path. NO WellKnown or SecurityTxt pointer
+  is emitted in apis.yml: nothing here is a served document.
+hosts:
+- host: innovaccer.com
+  paths:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 404, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 404, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 404, file: null}
+  - {path: /.well-known/api-catalog, status: 404, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+- host: nucleus.innovaccer.com
+  note: >-
+    Innovaccer's developer platform host (Datashop Engine); developer.innovaccer.com
+    302s here. OAuth/OIDC/api-catalog paths redirect to the login page.
+  paths:
+  - {path: /.well-known/security.txt, status: 404, file: null}
+  - {path: /.well-known/openid-configuration, status: 302, redirect: '/login?redirect_url=%2F.well-known%2Fopenid-configuration', file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 302, redirect: '/login?redirect_url=%2F.well-known%2Foauth-authorization-server', file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 302, redirect: '/login?redirect_url=%2F.well-known%2Foauth-protected-resource', file: null}
+  - {path: /.well-known/api-catalog, status: 302, redirect: '/login?redirect_url=%2F.well-known%2Fapi-catalog', file: null}
+  - {path: /.well-known/ai-plugin.json, status: 404, file: null}
+  - {path: /.well-known/agent-card.json, status: 404, file: null}
+  - {path: /.well-known/agent.json, status: 404, file: null}
+- host: mds.innovaccer.com
+  note: Masala Design System docs host; static origin returns 403 XML for unknown paths.
+  paths:
+  - {path: /.well-known/security.txt, status: 403, file: null}
+  - {path: /.well-known/openid-configuration, status: 403, file: null}
+  - {path: /.well-known/oauth-authorization-server, status: 403, file: null}
+  - {path: /.well-known/oauth-protected-resource, status: 403, file: null}
+  - {path: /.well-known/api-catalog, status: 403, file: null}
+  - {path: /.well-known/ai-plugin.json, status: 403, file: null}
+  - {path: /.well-known/agent-card.json, status: 403, file: null}
+  - {path: /.well-known/agent.json, status: 403, file: null}

@@ -1,16 +1,26 @@
-generated: '2026-07-19'
+generated: '2026-08-15'
 method: searched
-source: https://registry.npmjs.org / https://github.com/innovaccer
+source: https://registry.npmjs.org / https://pypi.org / https://github.com/innovaccer
 notes: >-
   First-party Innovaccer packages published on npm under the @innovaccer scope.
   These are client-side libraries for the open-source Masala Design System (MDS)
   and an MCP server for it, not SDKs for the Innovaccer healthcare data platform
-  API (that platform is gated behind the developer portal at developer.innovaccer.com).
+  API (that platform is gated behind the developer portal at developer.innovaccer.com,
+  and Innovaccer publishes no client library for it in any registry).
+  Every version/published pair below was read from registry.npmjs.org on 2026-08-15.
+currency_summary: >-
+  The design system itself is actively maintained (4.27.0 shipped 2026-08-04).
+  Two satellites have decayed: @innovaccer/charts has not been republished since
+  2021-04-24 (five years) despite the docs still listing charts as an MDS family,
+  and @innovaccer/mds-ai has a GitHub repository and a docs site but was never
+  published to npm at all. @innovaccer/mds-mcp is npm-current but still on a
+  prerelease dist-tag.
 packages:
 - language: javascript
   registry: npm
   name: "@innovaccer/design-system"
-  version: 4.26.1
+  version: 4.27.0
+  published: '2026-08-04'
   license: MIT
   url: https://www.npmjs.com/package/@innovaccer/design-system
   install: npm install @innovaccer/design-system
@@ -22,6 +32,7 @@ packages:
   registry: npm
   name: "@innovaccer/charts"
   version: 1.0.0
+  published: '2021-04-24'
   license: MIT
   url: https://www.npmjs.com/package/@innovaccer/charts
   install: npm install @innovaccer/charts
@@ -29,10 +40,15 @@ packages:
   repository: https://github.com/innovaccer/design-system
   description: Chart components for the Masala Design System.
   official: true
+  note: >-
+    Still at its first release. No republish since 2021-04-24 (registry `modified`
+    2022-04-05) while the core design system has shipped through 4.27.0 — the
+    strongest decay signal in Innovaccer's package surface.
 - language: javascript
   registry: npm
   name: "@innovaccer/helpers"
   version: 2.0.1
+  published: '2024-10-25'
   license: MIT
   url: https://www.npmjs.com/package/@innovaccer/helpers
   install: npm install @innovaccer/helpers
@@ -44,6 +60,7 @@ packages:
   registry: npm
   name: "@innovaccer/rich-text-editor"
   version: 3.0.5
+  published: '2026-05-14'
   license: MIT
   url: https://www.npmjs.com/package/@innovaccer/rich-text-editor
   install: npm install @innovaccer/rich-text-editor
@@ -54,8 +71,40 @@ packages:
   registry: npm
   name: "@innovaccer/mds-mcp"
   version: 5.0.0-26-mcp.9.d9fbf90
+  published: '2026-07-13'
   license: MIT
   url: https://www.npmjs.com/package/@innovaccer/mds-mcp
   install: npx @innovaccer/mds-mcp
   description: Model Context Protocol (MCP) server for the Masala Design System.
   official: true
+  note: >-
+    The `latest` dist-tag still resolves to a prerelease build string; there is no
+    stable 5.0.0 on npm.
+- language: javascript
+  registry: npm
+  name: "@innovaccer/mds-ai"
+  version: null
+  published: null
+  url: https://github.com/innovaccer/mds-ai
+  homepage: https://innovaccer.github.io/mds-ai/
+  description: React components for AI-based apps (MDS AI).
+  official: true
+  note: >-
+    Checked registry.npmjs.org on 2026-08-15 — the package does not exist ("Not
+    found"). The repository and docs site are public but the library is not
+    distributed through any registry; last repository push 2024-05-24.
+- language: python
+  registry: pypi
+  name: hmcp
+  version: null
+  published: null
+  license: MIT
+  url: https://github.com/innovaccer/Healthcare-MCP
+  repository: https://github.com/innovaccer/Healthcare-MCP
+  description: Healthcare Model Context Protocol reference implementation (client + server).
+  official: true
+  note: >-
+    Checked pypi.org/pypi/hmcp/json and pypi.org/pypi/healthcare-mcp/json on
+    2026-08-15 — both 404. pyproject.toml declares name "hmcp" version 0.0.4 and the
+    README's install instructions are explicitly "temporary steps till the package
+    isn't published" (`pip install hatch; hatch build`). Source-only distribution.

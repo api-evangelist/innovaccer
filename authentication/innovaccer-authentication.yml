@@ -1,0 +1,112 @@
+generated: '2026-08-15'
+method: searched
+source: https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md
+docs:
+- https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/auth.md
+- https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/index.md
+- https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/hmcp_auth_vs_mcp_auth.md
+- https://github.com/innovaccer/Healthcare-MCP/blob/main/docs/specification/context.md
+summary: >-
+  Innovaccer publishes no OpenAPI and no anonymous auth reference for the Nucleus /
+  Datashop developer platform — that portal's API catalog sits behind a session
+  login. The auth profile recorded here is the one Innovaccer DOES publish openly:
+  the Healthcare Model Context Protocol (HMCP), its first-party open-source
+  extension of MCP, whose specification documents the OAuth 2.0 / OpenID Connect /
+  SMART on FHIR authorization model that healthcare agents use to reach an HMCP
+  server. Derived from the published specification text, not from a machine-readable
+  contract.
+applies_to:
+  api: Healthcare Model Context Protocol (HMCP)
+  repository: https://github.com/innovaccer/Healthcare-MCP
+  note: >-
+    HMCP is a protocol specification plus a Python reference implementation. There is
+    no Innovaccer-hosted public HMCP endpoint to probe; a customer or partner runs an
+    HMCP server (or connects to the Innovaccer HMCP Cloud Gateway under contract).
+framework: SMART on FHIR (OAuth 2.0 + OpenID Connect)
+schemes:
+- id: oauth2-authorization-code
+  type: oauth2
+  flow: authorizationCode
+  description: >-
+    User-mediated flow. The client calls /authorize with response_type=code,
+    client_id, redirect_uri, scope, state and audience/aud set to the HMCP server
+    URI, then exchanges the code at /token for a bearer access token.
+  parameters:
+  - response_type
+  - client_id
+  - redirect_uri
+  - scope
+  - state
+  - audience
+  - aud
+  token_response_fields:
+  - access_token
+  - token_type
+  - expires_in
+  - scope
+  - id_token
+  - patient
+  pkce: true
+  pkce_note: PKCE is named in the HMCP repository description as part of the OAuth 2.0 posture.
+- id: oauth2-client-credentials
+  type: oauth2
+  flow: clientCredentials
+  description: >-
+    Service-to-service flow with no user involvement. POST /token with
+    grant_type=client_credentials, client_id, client_secret and scope. The
+    specification recommends pairing it with mTLS.
+- id: openid-connect
+  type: openIdConnect
+  description: >-
+    OIDC on top of the authorization-code flow — request the `openid` scope to
+    receive an ID token; a UserInfo endpoint supplies additional user attributes.
+    Standard claims include SMART on FHIR and healthcare-specific claims.
+- id: mutual-tls
+  type: mutualTLS
+  description: >-
+    Mutual TLS is named in the HMCP specification index as one of the two primary
+    authentication mechanisms, for secure service-to-service communication.
+- id: bearer-token
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  description: >-
+    Every HMCP API request carries `Authorization: Bearer ACCESS_TOKEN`. Access
+    tokens are JWTs.
+token_claims:
+  format: JWT
+  standard:
+  - iss
+  - sub
+  - aud
+  - exp
+  - iat
+  - scope
+  healthcare:
+  - patient
+  - encounter
+  - tenant
+  - acr
+  - fhirUser
+  validation_guidance: >-
+    The specification instructs clients and servers to verify all claims including
+    audience (aud) and issuer (iss).
+patient_context:
+  mechanisms:
+  - {kind: oauth-scope, detail: "patient/ scope prefix plus launch/patient; token response carries a `patient` (and optionally `encounter`) parameter"}
+  - {kind: jwt-claim, detail: "patient/encounter embedded as JWT claims; server enforces context without per-call parameters"}
+  - {kind: http-header, detail: "HTTP headers supported for backwards compatibility with systems that do not fully implement SMART on FHIR"}
+token_storage_guidance:
+- Store access tokens in memory where possible, not in localStorage or cookies
+- Use secure OS credential storage in native apps
+- Prefer refresh tokens over long-lived access tokens
+- Validate tokens on both client and server
+gaps:
+- >-
+  No anonymous /.well-known/openid-configuration or /.well-known/oauth-authorization-server
+  is served: nucleus.innovaccer.com 302s those paths to /login (see well-known/innovaccer-well-known.yml).
+- >-
+  The specification uses placeholder issuer/audience hosts
+  (authorization-server.example.com, hmcp-server.example.com); no Innovaccer-operated
+  authorization server host is published.
+- No auth reference is published for the Nucleus / Datashop platform API itself.

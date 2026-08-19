@@ -1,4 +1,4 @@
-generated: '2026-07-19'
+generated: '2026-08-15'
 method: searched
 status: published
 source: https://www.npmjs.com/package/@innovaccer/mds-mcp
@@ -6,20 +6,54 @@ servers:
 - name: mds-mcp
   status: published
   transport: stdio
-  package: "@innovaccer/mds-mcp"
+  package: '@innovaccer/mds-mcp'
+  version: 5.0.0-26-mcp.9.d9fbf90
+  published: '2026-07-13'
   install: npx @innovaccer/mds-mcp
-  description: >-
-    Official Model Context Protocol server for the Masala Design System (MDS).
-    Lets an agent/IDE query MDS components, tokens, and usage guidance.
+  description: Official Model Context Protocol server for the Masala Design System (MDS). Lets an agent/IDE
+    query MDS components, tokens, and usage guidance.
   url: https://www.npmjs.com/package/@innovaccer/mds-mcp
 related:
 - name: Healthcare Model Context Protocol (HMCP)
   status: specification
-  transport: [sse, streamable-http]
+  transport:
+  - sse
+  - streamable-http
   repository: https://github.com/innovaccer/Healthcare-MCP
+  version: 0.0.4
+  description: Open protocol (a healthcare-oriented extension of Anthropic's MCP) for secure, interoperable
+    communication between healthcare agentic applications. Implements OAuth 2.0 / SMART on FHIR, PKCE,
+    encryption, audit logging, and rate limiting for HIPAA-aligned agent-to-agent workflows. Adds MCP
+    `sampling` to the SERVER side for bidirectional agent-to-agent messaging, and declares guardrails
+    (NVIDIA NeMo Guardrails) under the server's `experimental` capabilities. Python reference
+    implementation; not published to PyPI (pypi.org/pypi/hmcp/json -> 404, checked 2026-08-15; the README
+    still gives "temporary steps till the package isn't published"). No public hosted endpoint.
+  spec_docs: https://github.com/innovaccer/Healthcare-MCP/tree/main/docs/specification
+- name: Innovaccer HMCP Cloud Gateway
+  status: commercial
   description: >-
-    Open protocol (a healthcare-oriented extension of Anthropic's MCP) for secure,
-    interoperable communication between healthcare agentic applications. Implements
-    OAuth 2.0 / SMART on FHIR, PKCE, encryption, audit logging, and rate limiting for
-    HIPAA-aligned agent-to-agent workflows. Python reference implementation; not yet
-    published to PyPI (build from source with hatch). No public hosted endpoint.
+    Innovaccer markets a hosted HMCP gateway that registers agents and data sources,
+    enforces policy-driven context and guardrails, and resolves patient identity via
+    EMPI. No public endpoint URL, no anonymous documentation and no /.well-known/
+    discovery document is published for it, so it is recorded here as a commercial
+    offering rather than as a reachable MCP server.
+  source: https://innovaccer.com/gravity/resources/stories/introducing-hmcp-a-universal-open-standard-for-ai-in-healthcare
+deployment:
+  mode: local-stdio
+  install: npx @innovaccer/mds-mcp
+  package: https://www.npmjs.com/package/@innovaccer/mds-mcp
+  auth: none
+  verified: searched
+  checked: '2026-08-15'
+  source: npm registry metadata + Innovaccer public surface
+  note: >-
+    No remote endpoint exists. The only shipping MCP server is an npm-distributed
+    stdio server for the design system, which a human must install before any agent
+    can reach it. HMCP is a specification with a source-only reference implementation,
+    and the commercial HMCP Cloud Gateway publishes no callable URL.
+tool_crosswalk:
+  emitted: false
+  reason: >-
+    A ToolCrosswalk binds MCP tools to backing OpenAPI operationIds. Innovaccer
+    publishes no OpenAPI on any host, and the mds-mcp server is stdio-only so its
+    live tools/list cannot be probed over HTTP. Nothing to bind — no crosswalk written.

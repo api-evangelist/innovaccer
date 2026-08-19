@@ -1,0 +1,61 @@
+generated: '2026-08-15'
+method: searched
+source: >-
+  https://github.com/innovaccer/design-system/blob/master/CHANGELOG.md /
+  https://github.com/innovaccer/design-system/releases /
+  https://github.com/innovaccer/Healthcare-MCP
+notes: >-
+  Innovaccer publishes no versioning policy, no deprecation/sunset policy and no
+  status page for its healthcare data platform API — that surface is gated behind
+  the Nucleus / Datashop developer portal login. What IS published is the lifecycle
+  of the open-source developer surface: the Masala Design System (semver, tagged
+  GitHub releases, a structured changelog) and the HMCP specification repository.
+versioning:
+  policy_published: false
+  surfaces:
+  - name: Masala Design System (@innovaccer/design-system)
+    scheme: semver
+    current_version: 4.27.0
+    released: '2026-08-04'
+    source: https://github.com/innovaccer/design-system/releases
+    note: >-
+      Tagged GitHub release per minor/patch; each release note carries explicit
+      "Breaking changes", "Migration guide" and "Deprecations" headings (all
+      reported NA for the 4.2x line).
+  - name: Healthcare Model Context Protocol (HMCP)
+    scheme: semver
+    current_version: 0.0.4
+    source: https://github.com/innovaccer/Healthcare-MCP/blob/main/pyproject.toml
+    note: >-
+      Pre-1.0 Python reference implementation; no tags and no GitHub releases cut.
+      Last push 2026-02-04. Not published to PyPI (pypi.org/pypi/hmcp/json -> 404),
+      so version history is only readable from the repository.
+  - name: Nucleus / Datashop platform API
+    scheme: unknown
+    note: No public versioning statement; API catalog requires a portal session.
+deprecation:
+  policy_published: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  rfc8594: unknown
+  note: >-
+    No RFC 8594 Sunset/Deprecation header behaviour is documented anywhere on the
+    public surface. The MDS changelog reserves a "Deprecations" section per release,
+    which is a communication convention rather than a published policy — no
+    Deprecation pointer is emitted in apis.yml on that basis.
+  deprecated_operations: []
+status_page:
+  published: false
+  probes:
+  - {url: 'https://status.innovaccer.com', status: 0, note: DNS does not resolve}
+  - {url: 'https://status.innovaccer.io', status: 0, note: DNS does not resolve}
+sla:
+  published: false
+  note: >-
+    No public SLA. Support runs through a gated portal
+    (https://support.innovaccer.com -> login.jsp).
+support:
+  url: https://support.innovaccer.com
+  gated: true
+  status: 200
+  note: Redirects to login.jsp; customer/partner authentication required.
