@@ -1,0 +1,31 @@
+# Front Door AI Index — innovaccer — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: innovaccer
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: innovaccer.com
+  final_host: innovaccer.com
+  ownership: own
+  owner: innovaccer
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 59
+  host_score: 59
+  density: 25.41
+  words: 2322
+  tiers:
+    agentic: 16
+    core: 43
+    model: 0
+  ambiguous: 14
+  top_terms:
+    AI: 43
+    agent: 11
+    AI agent: 6
+    agentic: 5
+    copilot: 4
+    intelligence: 3
+    autonomous agent: 1
